@@ -22,19 +22,19 @@ public class Calculator {
     List<Integer> results = new ArrayList<>();
 
     // throws : 이 메서드가 어떤 예외사항 던질 수 있는 알려줌
-    public int calculate(int num1, int num2, String operator) throws InvalidOperatorException, DivisionByZeroException {
+    public int calculate(int num1, int num2, char operator) throws InvalidOperatorException, DivisionByZeroException {
         int result = 0;
         switch (operator) {
-            case "+":
+            case '+':
                 result = num1 + num2;
                 break;
-            case "-":
+            case '-':
                 result = num1 - num2;
                 break;
-            case "*":
+            case '*':
                 result = num1 * num2;
                 break;
-            case "/":
+            case '/':
                 if(num2 == 0){
                     throw new DivisionByZeroException("나눗셈 연산에서 분모에 0이 입력될 수 없습니다.");
                 }
