@@ -5,6 +5,11 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        /* 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다. */
+        int[] arr = new int[10];
+
+        /* 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수를 선언 */
+        int lastIndex = 0;
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -37,12 +42,22 @@ public class App {
                 continue;
             }
 
+            /* 연산의 결과를 배열에 저장 */
+            arr[lastIndex] = result;
+            lastIndex++;
+
             System.out.println("결과: " + result);
 
             System.out.print("프로그램을 종료하려면 exit을 입력하세요: ");
             String exit = sc.next();
             if (exit.equals("exit"))
                 break;
+        }
+
+        /* 배열에 저장된 연산 결과 출력 */
+        System.out.println("저장된 연산 결과: ");
+        for (int i = 0; i < lastIndex; i++) {
+            System.out.print(arr[i] + " ");
         }
 
     }
