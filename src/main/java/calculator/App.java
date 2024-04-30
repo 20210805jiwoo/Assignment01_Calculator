@@ -44,17 +44,25 @@ public class App {
             System.out.println("결과: " + result);
 
             // remove 입력 시 가장 먼저 저장된 결과 삭제
-            System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) ");
             String removeInput = sc.next();
             if (removeInput.equals("remove")) {
                 numbers.remove(0); // ArrayList의 첫 번째 요소 삭제
                 System.out.println("가장 먼저 저장된 결과가 삭제되었습니다.");
             }
-
             // 연산 결과 ArrayList에 추가
             numbers.add(result);
 
-            System.out.print("더 계산하시겠습니까? (exit 입력 시 종료)");
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) ");
+            String inquiryInput = sc.next();
+            if (inquiryInput.equals("inquiry")) {
+                for(Integer i : numbers) {
+                    System.out.print(i + " ");
+                }
+                System.out.println();
+            }
+
+            System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) ");
             String exit = sc.next();
             if (exit.equals("exit"))
                 break;
