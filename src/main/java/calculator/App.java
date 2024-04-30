@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        /* 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다. */
+        // 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다.
         int[] arr = new int[10];
 
-        /* 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수를 선언 */
+        // 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수를 선언
         int lastIndex = 0;
 
         while (true) {
@@ -38,27 +38,33 @@ public class App {
                     continue;
                 }
             } else {
-                System.out.println("기호를 잚못 입력했습니다.");
+                System.out.println("기호를 잘못 입력했습니다.");
                 continue;
             }
 
-            /* 연산의 결과를 배열에 저장 */
-            arr[lastIndex] = result;
-            lastIndex++;
+            // 연산의 결과를 배열에 저장
+            if(lastIndex < arr.length) { // 배열 크기 초과하지 않는 경우
+                arr[lastIndex] = result;
+                lastIndex++; // index 증가
+            } else { // 배열 크기 초과하면, 가장 먼저 저장된 결과 삭제하고 새로운 결과 저장
+                for (int i = 0; i < arr.length - 1; i++) {
+                    arr[i] = arr[i + 1]; // 결과들을 한 칸씩 앞으로 이동
+                }
+                arr[arr.length - 1] = result; // 새로운 결과 배열 마지막에 저장
+            }
 
             System.out.println("결과: " + result);
 
-            System.out.print("프로그램을 종료하려면 exit을 입력하세요: ");
+            System.out.print("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exit = sc.next();
             if (exit.equals("exit"))
                 break;
         }
 
-        /* 배열에 저장된 연산 결과 출력 */
+        // 배열에 저장된 연산 결과 출력
         System.out.println("저장된 연산 결과: ");
         for (int i = 0; i < lastIndex; i++) {
             System.out.print(arr[i] + " ");
         }
-
     }
 }
