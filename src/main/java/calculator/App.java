@@ -10,8 +10,9 @@ public class App {
         SubtractOperator subtractOperator = new SubtractOperator();
         MultiplyOperator multiplyOperator = new MultiplyOperator();
         DivideOperator divideOperator = new DivideOperator();
+        ModOperator modOperator = new ModOperator();
 
-        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(addOperator, subtractOperator, multiplyOperator, divideOperator);
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(addOperator, subtractOperator, multiplyOperator, divideOperator, modOperator);
         CircleCalculator circleCalculator = new CircleCalculator();
 
         Scanner sc = new Scanner(System.in);
