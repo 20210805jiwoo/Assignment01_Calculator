@@ -50,7 +50,7 @@ public class App {
                 break;
                 case 2: {
                     System.out.print("반지름을 입력하세요: ");
-                    double radius = sc.nextDouble();
+                    int radius = sc.nextInt();
                     double circleResult = circleCalculator.calculate(radius, 0, ' ');
                     System.out.println("결과: " + circleResult);
                     System.out.println("저장된 원의 넓이: " + circleCalculator.getResults());

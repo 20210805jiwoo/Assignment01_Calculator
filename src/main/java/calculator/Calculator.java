@@ -28,7 +28,7 @@ public abstract class Calculator {
     /* static, final 활용 원의 넓이 결과를 저장하는 컬렉션 타입의 필드 선언 및 생성 */
     private static final List<Double> circleAreas = new ArrayList<>();
 
-    public abstract double calculate(double num1, double num2, char operator) throws InvalidOperatorException, DivisionByZeroException;
+    public abstract double calculate(int num1, int num2, char operator) throws InvalidOperatorException, DivisionByZeroException;
 
     // Getter 메서드
     public List<Double> getResults() {

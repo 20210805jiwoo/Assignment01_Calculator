@@ -1,7 +1,7 @@
 package main.java.calculator;
 
 public class CircleCalculator extends Calculator {
-    public double calculate(double radius, double diameter, char operator) {
+    public double calculate(int radius, int diameter, char operator) {
         if (radius <= 0) {
             throw new IllegalArgumentException("반지름은 0보다 커야 합니다.");
         } else {
