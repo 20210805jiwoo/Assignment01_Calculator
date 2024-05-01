@@ -22,7 +22,6 @@ public class App {
 
             try {
                 int result = calculator.calculate(num1, num2, operator);
-                // operator의 매개변수
                 System.out.println("결과: " + result);
             } catch (InvalidOperatorException | DivisionByZeroException e) {
                 System.out.println("오류 발생: " + e.getMessage());

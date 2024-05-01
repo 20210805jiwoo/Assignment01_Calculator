@@ -19,7 +19,7 @@ class DivisionByZeroException extends Exception {
 
 public class Calculator {
     /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
-    List<Integer> results = new ArrayList<>();
+    private List<Integer> results = new ArrayList<>();
 
     // throws : 이 메서드가 어떤 예외사항 던질 수 있는 알려줌
     public int calculate(int num1, int num2, char operator) throws InvalidOperatorException, DivisionByZeroException {
@@ -48,7 +48,13 @@ public class Calculator {
         return result;
     }
 
+    // Getter 메서드
     public List<Integer> getResults() {
         return results;
+    }
+
+    // Setter 메서드
+    public void setResults(List<Integer> results) {
+        this.results = results;
     }
 }
