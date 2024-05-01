@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        Calculator calculator = new Calculator(); // Calculator 인스턴스 생성
+    //    Calculator calculator = new Calculator(); // Calculator 인스턴스 생성
+        Calculator arithmeticCalculator = new ArithmeticCalculator();
+        Calculator circleCalculator = new CircleCalculator();
 
         Scanner sc = new Scanner(System.in);
 
@@ -27,7 +29,7 @@ public class App {
                     char operator = sc.next().charAt(0);
 
                     try {
-                        int result = calculator.calculate(num1, num2, operator);
+                        double result = arithmeticCalculator.calculate(num1, num2, operator);
                         System.out.println("결과: " + result);
                     } catch (InvalidOperatorException | DivisionByZeroException e) {
                         System.out.println("오류 발생: " + e.getMessage());
@@ -36,26 +38,26 @@ public class App {
                     System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) ");
                     String removeInput = sc.next();
                     if (removeInput.equals("remove")) {
-                        calculator.removeResult();
+                        arithmeticCalculator.removeResult();
                     }
 
                     System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) ");
                     String inquiryInput = sc.next();
                     if (inquiryInput.equals("inquiry")) {
-                        calculator.inquiryResults();
+                        arithmeticCalculator.inquiryResults();
                     }
                 }
                 break;
                 case 2: {
                     System.out.print("반지름을 입력하세요: ");
                     double radius = sc.nextDouble();
-                    double circleResult = calculator.calculateCircleArea(radius);
-                    System.out.println("결과: " + circleResult);
-
-                    // 원의 넓이 저장
-                    Calculator.getCircleAreas().add(circleResult);
-                    // 저장된 원의 넓이 값들 전체 조회
-                    System.out.println("저장된 원의 넓이: " + Calculator.getCircleAreas());
+                    try {
+                        double circleResult = circleCalculator.calculate(radius, 0, ' ');
+                        System.out.println("결과: " + circleResult);
+                        System.out.println("저장된 원의 넓이: " + circleCalculator.getResults());
+                    } catch (InvalidOperatorException | DivisionByZeroException e) {
+                        System.out.println("오류 발생: " + e.getMessage());
+                    }
                 }
                 break;
                 default:

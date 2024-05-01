@@ -17,55 +17,21 @@ class DivisionByZeroException extends Exception {
     }
 }
 
-public class Calculator {
+public abstract class Calculator {
     /* 연산 결과를 저장하는 컬렉션 타입 필드가 생성자를 통해 초기화 되도록 변경 */
-    private List<Integer> results;
-
-    /* static, final 활용 원의 넓이 결과를 저장하는 컬렉션 타입의 필드 선언 및 생성 */
-    private static final List<Double> circleAreas = new ArrayList<>();
+    protected List<Double> results;
 
     public Calculator() {
         this.results = new ArrayList<>();
     }
 
-    public double calculateCircleArea(double radius) {
-        if (radius <= 0) {
-            System.out.println("반지름은 0보다 커야 합니다.");
-            return 0;
-        } else {
-            return Math.PI * radius * radius;
-        }
-    }
+    /* static, final 활용 원의 넓이 결과를 저장하는 컬렉션 타입의 필드 선언 및 생성 */
+    private static final List<Double> circleAreas = new ArrayList<>();
 
-    // throws : 이 메서드가 어떤 예외사항 던질 수 있는 알려줌
-    public int calculate(int num1, int num2, char operator) throws InvalidOperatorException, DivisionByZeroException {
-        int result = 0;
-        switch (operator) {
-            case '+':
-                result = num1 + num2;
-                break;
-            case '-':
-                result = num1 - num2;
-                break;
-            case '*':
-                result = num1 * num2;
-                break;
-            case '/':
-                if (num2 == 0) {
-                    throw new DivisionByZeroException("나눗셈 연산에서 분모에 0이 입력될 수 없습니다.");
-                }
-                result = num1 / num2;
-                break;
-            default:
-                throw new InvalidOperatorException("유효하지 않은 연산자 기호입니다.");
-        }
-        results.add(result);
-
-        return result;
-    }
+    public abstract double calculate(double num1, double num2, char operator) throws InvalidOperatorException, DivisionByZeroException;
 
     // Getter 메서드
-    public List<Integer> getResults() {
+    public List<Double> getResults() {
         return results;
     }
 
@@ -74,7 +40,7 @@ public class Calculator {
     }
 
     // Setter 메서드
-    public void setResults(List<Integer> results) {
+    public void setResults(List<Double> results) {
         this.results = results;
     }
 
