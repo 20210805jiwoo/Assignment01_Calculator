@@ -6,18 +6,22 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-    //    Calculator calculator = new Calculator(); // Calculator 인스턴스 생성
-        Calculator arithmeticCalculator = new ArithmeticCalculator();
-        Calculator circleCalculator = new CircleCalculator();
+        AddOperator addOperator = new AddOperator();
+        SubtractOperator subtractOperator = new SubtractOperator();
+        MultiplyOperator multiplyOperator = new MultiplyOperator();
+        DivideOperator divideOperator = new DivideOperator();
+
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(addOperator, subtractOperator, multiplyOperator, divideOperator);
+        CircleCalculator circleCalculator = new CircleCalculator();
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("1. 사칙연산 계산 ");
-        System.out.println("2. 원의 넓이 계산");
-        System.out.print("원하는 작업의 번호를 입력하세요: ");
-        int choice = sc.nextInt();
-
         while (true) {
+            System.out.println("1. 사칙연산 계산 ");
+            System.out.println("2. 원의 넓이 계산");
+            System.out.print("원하는 작업의 번호를 입력하세요: ");
+            int choice = sc.nextInt();
+
             switch (choice) {
                 case 1: {
                     System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -28,12 +32,8 @@ public class App {
                     System.out.print("사칙연산 기호를 입력하세요: ");
                     char operator = sc.next().charAt(0);
 
-                    try {
-                        double result = arithmeticCalculator.calculate(num1, num2, operator);
-                        System.out.println("결과: " + result);
-                    } catch (InvalidOperatorException | DivisionByZeroException e) {
-                        System.out.println("오류 발생: " + e.getMessage());
-                    }
+                    double result = arithmeticCalculator.calculate(num1, num2, operator);
+                    System.out.println("결과: " + result);
 
                     System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) ");
                     String removeInput = sc.next();
@@ -51,13 +51,9 @@ public class App {
                 case 2: {
                     System.out.print("반지름을 입력하세요: ");
                     double radius = sc.nextDouble();
-                    try {
-                        double circleResult = circleCalculator.calculate(radius, 0, ' ');
-                        System.out.println("결과: " + circleResult);
-                        System.out.println("저장된 원의 넓이: " + circleCalculator.getResults());
-                    } catch (InvalidOperatorException | DivisionByZeroException e) {
-                        System.out.println("오류 발생: " + e.getMessage());
-                    }
+                    double circleResult = circleCalculator.calculate(radius, 0, ' ');
+                    System.out.println("결과: " + circleResult);
+                    System.out.println("저장된 원의 넓이: " + circleCalculator.getResults());
                 }
                 break;
                 default:
