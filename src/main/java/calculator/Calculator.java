@@ -18,7 +18,7 @@ class DivisionByZeroException extends Exception {
 }
 
 public class Calculator {
-    /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
+    /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 (외부에서 접근 못함) */
     private List<Integer> results = new ArrayList<>();
 
     // throws : 이 메서드가 어떤 예외사항 던질 수 있는 알려줌
@@ -56,5 +56,12 @@ public class Calculator {
     // Setter 메서드
     public void setResults(List<Integer> results) {
         this.results = results;
+    }
+
+    // 가장 먼저 저장된 데이터 삭제하는 메서드
+    public void removeResult() {
+        if(!results.isEmpty()){
+            results.remove(0);
+        }
     }
 }
