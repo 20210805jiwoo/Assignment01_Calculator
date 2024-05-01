@@ -21,9 +21,22 @@ public class Calculator {
     /* 연산 결과를 저장하는 컬렉션 타입 필드가 생성자를 통해 초기화 되도록 변경 */
     private List<Integer> results;
 
+    /* static, final 활용 원의 넓이 결과를 저장하는 컬렉션 타입의 필드 선언 및 생성 */
+    private static final List<Double> circleAreas = new ArrayList<>();
+
     public Calculator() {
         this.results = new ArrayList<>();
     }
+
+    public double calculateCircleArea(double radius) {
+        if (radius <= 0) {
+            System.out.println("반지름은 0보다 커야 합니다.");
+            return 0;
+        } else {
+            return Math.PI * radius * radius;
+        }
+    }
+
     // throws : 이 메서드가 어떤 예외사항 던질 수 있는 알려줌
     public int calculate(int num1, int num2, char operator) throws InvalidOperatorException, DivisionByZeroException {
         int result = 0;
@@ -54,6 +67,10 @@ public class Calculator {
     // Getter 메서드
     public List<Integer> getResults() {
         return results;
+    }
+
+    public static List<Double> getCircleAreas() {
+        return circleAreas;
     }
 
     // Setter 메서드
