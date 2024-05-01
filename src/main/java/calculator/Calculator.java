@@ -35,7 +35,7 @@ public class Calculator {
                 result = num1 * num2;
                 break;
             case '/':
-                if(num2 == 0){
+                if (num2 == 0) {
                     throw new DivisionByZeroException("나눗셈 연산에서 분모에 0이 입력될 수 없습니다.");
                 }
                 result = num1 / num2;
@@ -60,8 +60,12 @@ public class Calculator {
 
     // 가장 먼저 저장된 데이터 삭제하는 메서드
     public void removeResult() {
-        if(!results.isEmpty()){
+        if (!results.isEmpty()) {
             results.remove(0);
         }
+    }
+
+    public void inquiryResults() {
+        System.out.println("저장된 연산 결과: " + results);
     }
 }

@@ -27,10 +27,16 @@ public class App {
                 System.out.println("오류 발생: " + e.getMessage());
             }
 
-            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) ");
             String removeInput = sc.next();
             if (removeInput.equals("remove")) {
                 calculator.removeResult();
+            }
+
+            System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) ");
+            String inquiryInput = sc.next();
+            if (inquiryInput.equals("inquiry")) {
+                calculator.inquiryResults();
             }
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) ");
