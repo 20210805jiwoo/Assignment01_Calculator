@@ -1,6 +1,6 @@
 package main.java.calculator;
 
-public class SubtractOperator {
+public class SubtractOperator extends AbstractOperator {
     public int operate(int num1, int num2) {
         return num1 - num2;
     }
